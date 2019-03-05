@@ -1,0 +1,20 @@
+a=rgb2gray(imread("Image A.jpg"));
+b=rgb2gray(imread("Image B.jpg"));
+figure
+subplot(121)
+imshow(a(:,:,1))
+title('²Î¿¼Í¼Æ¬')
+subplot(122)
+imshow(b(:,:,1))
+title('ÊäÈëÍ¼Æ¬')
+a1=edge(a,"sobel",0.16)
+b1=edge(b,"sobel",0.16)
+tform=cp2tform(fixedPoints1,movingPoints1,"affine");
+c=imtransform(b,tform);
+figure
+subplot(121)
+imshow(a);
+title('²Î¿¼Í¼Ïñ');
+subplot(122)
+imshow(c);
+title('Êä³öÍ¼Ïñ');
